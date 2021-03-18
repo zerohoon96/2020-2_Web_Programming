@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/main.css">
+  </head>
+  <body>
+    {% if user and user.id %}
+    <a style="margin-left: 24%;" id="write" href="/gallery/insert" class="btn">사진 업로드</a>
+    {% endif %}
+          
+    <div class="container">
+      <div class="profile-wrap">
+        
+        <title>CSS</title>
+        <style>
+          table {
+            border: 1px solid #444444;
+            border-collapse: collapse;
+            width: 100%;
+            text-align: center;
+          }
+          th, td {
+            border: 1px solid #444444;
+            padding: 10px;
+            
+          }
+        </style>
+
+        <table id="gallery-list" width ="500" height="300">
+          <thead>
+          <tr>
+            <th>사진</th>
+            <th>닉네임</th>
+            <th>작성일</th>
+            <th>수정</th>
+            <th>삭제</th>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+          
+        </table>
+        <footer>
+          Made by&nbsp;
+          <a>20162496 이영훈</a>
+        </footer>
+      </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/board_photo.js"></script>
+  </body>
+</html>

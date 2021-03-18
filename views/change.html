@@ -1,0 +1,41 @@
+{% block content %}
+<link rel="stylesheet" href="/main.css">
+
+<script>console.log('여긴 change')</script>
+{% if content %}
+<script>console.log('zzz')</script>
+{% else %}
+<script>console.log('없음zzzzzzzzzz')</script>
+{% endif %}
+<form id="S" action="/gallery" method="post" enctype="multipart/form-data">
+  <a style="margin-left: 24%">
+    <div class="img-preview">
+      <img id="img-preview" src="" style="display: none;" width="250" alt="미리보기">
+      <input id="img-url" type="hidden" name="url">
+    </div>
+    <div>
+      <label id="img-label" for="img">사진 선택</label>
+      <input id="img" type="file" accept="image/*">
+      <button id="" type="submit" class="btn">업로드</button>
+    </div>
+  </a>
+</form>
+<script>
+  if (document.getElementById('img')) {
+    document.getElementById('img').addEventListener('change', function(e) {
+      const formData = new FormData();
+      formData.append('img', this.files[0]);
+      axios.post('/gallery/img', formData) 
+        .then((res) => {
+          document.getElementById('img-url').value = res.data.url;
+          document.getElementById('img-preview').src = res.data.url;
+          document.getElementById('img-preview').style.display = 'inline';
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    });
+  }
+</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+{% endblock %}
